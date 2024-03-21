@@ -1,0 +1,147 @@
+//A1
+#include <stdio.h>
+void add(int *x, int *y,int *sum){
+  *sum = *x + *y;
+
+}
+void freq(int i, int array[], int l) {
+    for (int i = 0; i < l; i++) {
+        int count = 1;
+        for (int j = 0; j < l; j++) {
+            if (array[i] == array[j]) {
+                count++;
+            }
+        }
+        printf("\n%d", i);
+    }
+}
+
+int main(void) {
+    int i;
+    int l;
+    int dup = 0;
+  int x, y , sum;
+    printf("enter your array length:");
+    scanf("%d", &l);
+
+    int array[l];
+
+    printf("enter the numbers of your array:");
+
+    for (i = 0; i < l; i++) {
+        scanf("%d", &array[i]);
+    }
+
+    for (i = 0; i < l; i++) {
+        for (int j = i + 1; j < l; j++) {
+            if (array[i] == array[j]) {
+                dup++;
+            }
+        }
+    }
+
+    for (i = 0; i < l; i++) {
+        printf("%d\t", array[i]);
+    }
+
+    printf("\nNumber of duplicate elements in the array: %d\n", dup);
+    printf("\nUnique elements:\n");
+
+    for (i = 0; i < l; i++) {
+        int unique = 1;
+        for (int j = 0; j < l; j++) {
+            if (array[i] == array[j] && i != j) {
+                unique = 0;
+                break;
+            }
+        }
+        if (unique) {
+            printf("%d\t", array[i]);
+        }
+    }
+  freq(i, array, l);
+  printf("\nEnter x: ");
+  scanf("%d", &x);
+  printf("Enter y: ");
+  scanf("%d", &y);
+  add(&x, &y, &sum);
+  printf("Sum of numbers equals: %d", sum);
+    return 0;
+}
+//A2
+#include <stdio.h>
+int main(void) {
+  int x,y,z;
+  int *p=&x;
+  int *q=&y;
+  int *r=&z;
+  printf("Enter the value of x: ");
+  scanf("%d",&x);
+  printf("The address of xin hexadecimal :%p\n",p);
+  printf("The value of x :%d\n",*p);
+  printf("Enter the value of y: ");
+  scanf("%d",&y); 
+  printf("The address of y in hexadecimal :%p\n",q);
+  printf("The value of y :%d\n",*q);
+  printf("Enter the value of z: ");
+  scanf("%d",&z);
+  printf("The address of z in hexadecimal :%p\n",r);
+  printf("The value of z :%d\n",*r);
+  printf("Swapping Pointers\n");
+  int *k = p;
+  p = q;
+  q = k;
+  printf("The new address of x in hexadecimal :%p\n",p);
+  printf("The new value of x :%d\n",*p);  
+  printf("The new address of y in hexadecimal :%p\n",q);
+  printf("The new value of y :%d\n",*q);
+  printf("The new address of z in hexadecimal :%p\n",r);
+  printf("The new value of z :%d\n",*r);
+  return 0;
+}
+//A3
+#include <stdio.h>
+int compare(char text[], char text2[]) {
+  int i;
+  for (i = 0; text[i] != '\0' && text2[i] != '\0' && text[i] == text2[i]; i++) {
+        continue;
+    }
+    if (text[i] == '\0' && text2[i] == '\0')
+        return 1; 
+    else
+        return 0; 
+}
+int copy(char text[], char text2[]){
+  int i;
+  for (i = 0; text[i] != '\0'; i++){
+    text2[i] = text[i];
+  }
+  text2[i] = '\0';
+}
+int main(void) {
+  printf("Enter your text:");
+  int i;
+  char text[100];
+  char text2[100];
+  scanf("%s", text);
+  printf("Your text:%s", text);
+  printf("\nEnter your text2:");
+  scanf("%s", text2);
+  printf("Your text2:%s", text2);
+  printf("The individuals characters:");
+  for (i = 0; i < 100; i++){
+    if (text[i] == '\0'){
+      break;
+    }
+    printf("%c\n", text[i]);
+  }
+   if (compare(text, text2)) {
+          printf("strings are same.\n");
+      } else {
+          printf("The strings are different.\n");
+      }
+  copy(text, text2); 
+  printf("Your text2:%s", text2);
+  
+  return 0;
+}
